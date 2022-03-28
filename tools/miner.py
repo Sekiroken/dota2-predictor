@@ -5,7 +5,7 @@ import logging
 import pandas as pd
 import ssl
 import time
-import urllib2
+import urllib3
 
 from metadata import get_last_patch
 from pandas.io.json import json_normalize
@@ -59,8 +59,8 @@ def mine_data(file_name=None,
         try:
             current_link = OPENDOTA_URL + str(current_match_id)
             logger.info("Mining chunk starting at match ID %d", current_match_id)
-            response = urllib2.urlopen(current_link, timeout=timeout)
-        except (urllib2.URLError, ssl.SSLError) as error:
+            response = urllib3.request("GET", current_link)
+        except (urllib3.URLError, ssl.SSLError) as error:
             logger.error("Failed to make a request starting at match ID %d", current_match_id)
             logger.info("Waiting %d seconds before retrying", timeout)
             time.sleep(timeout)

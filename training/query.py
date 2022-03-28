@@ -6,7 +6,7 @@ import logging
 import numpy as np
 
 from os import listdir
-from sklearn.externals import joblib
+import joblib
 
 from preprocessing.augmenter import augment_with_advantages
 from tools.metadata import get_hero_dict, get_last_patch
