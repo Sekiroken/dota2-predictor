@@ -2,8 +2,8 @@ import logging
 import numpy as np
 import pandas as pd
 
-from advantages import compute_advantages
-from augmenter import augment_with_advantages
+from preprocessing.advantages import compute_advantages
+from preprocessing.augmenter import augment_with_advantages
 from tools.metadata import get_last_patch
 
 logging.basicConfig(level=logging.INFO)
